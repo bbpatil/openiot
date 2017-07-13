@@ -1,0 +1,132 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Subscribe Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+    @font-face {
+      font-family: 'Glyphicons Halflings';
+      src: url('fonts/fontawesome-webfont.woff2') format('woff2'),
+           url('fonts/fontawesome-webfont.woff') format('woff'),
+           url('fonts/fontawesome-webfont.ttf') format('truetype');
+    }
+    </style>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+      
+<div class="container">
+  <div style="margin: 90px 0;"><div>
+
+  <ol class="breadcrumb">
+  <li><a href="select_page.html">Home</a></li>
+  <li class="active">Subscribe</li>
+</ol>
+<div style="margin: 40px 0;"><div>
+    
+<div class="row">
+
+    <h2>Subscribe</h2>
+    <div style="margin: 30px 0;"></div>
+
+      <h4>Subscribe to a topic</h4>
+      <div style="margin: 20px 0;"></div>
+
+  <form class="form-inline">
+    <div class="form-group">
+      <!-- <label for="inputtopic">Subscribe to a topic</label> -->
+      <input type="text" id="subscribeinputtopic"  placeholder="topic" value="">
+    </div>
+
+   <input class="btn btn-default btn-xs btn-primary" id="subscribe" type="button"  onclick='subscribeWithAjax($("#subscribeinputtopic").val())' value = "Subscribe" />
+ 
+  </form>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+<div class="row">
+  <div style="margin: 40px 0;"></div>
+
+<h4>Subscribed topics:</h4>
+
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Humidity
+  </button>
+  
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+      http://services.openiot.eu:8890/sparql
+    </div>
+  </div>
+  
+  <div style="margin: 10px 0;"></div>
+  <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+    Weather
+  </button>
+  <div class="collapse" id="collapseExample2">
+    <div class="well">
+     http://services.openiot.eu:8890/sparql
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+    function subscribeWithAjax(addr){
+        
+        $.ajax({
+               
+               type:"POST",
+               url:'http://localhost:4567/postSubscribeTopic',
+
+               
+               data:{subscribeTopic:addr},
+               //can send multipledata like {data1:var1,data2:var2,data3:var3
+               //can use dataType:'text/html' or 'json' if response type expected
+               success:function(responsedata){
+               // process on data
+               alert("got response as "+"'"+responsedata+"'");
+               
+               }
+               });
+    }
+</script>
+<!--/container -->
+
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+
+
+</body></html>
